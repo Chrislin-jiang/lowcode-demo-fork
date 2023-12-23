@@ -36,7 +36,7 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                     "label": {
                       "type": "i18n",
                       "en-US": "advertList",
-                      "zh-CN": "advertList"
+                      "zh-CN": "图片列表"
                     }
                   },
                   "name": "advertList",
@@ -53,7 +53,7 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                                   "label": {
                                     "type": "i18n",
                                     "en-US": "imageUrl",
-                                    "zh-CN": "imageUrl"
+                                    "zh-CN": "图片地址"
                                   }
                                 },
                                 "name": "imageUrl",
@@ -67,11 +67,11 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                                 "title": {
                                   "label": {
                                     "type": "i18n",
-                                    "en-US": "intrinsicHeight",
-                                    "zh-CN": "intrinsicHeight"
+                                    "en-US": "intrinsicWidth",
+                                    "zh-CN": "原始宽度"
                                   }
                                 },
-                                "name": "intrinsicHeight",
+                                "name": "intrinsicWidth",
                                 "setter": {
                                   "componentName": "NumberSetter",
                                   "isRequired": true,
@@ -82,11 +82,11 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                                 "title": {
                                   "label": {
                                     "type": "i18n",
-                                    "en-US": "intrinsicWidth",
-                                    "zh-CN": "intrinsicWidth"
+                                    "en-US": "intrinsicHeight",
+                                    "zh-CN": "原始高度"
                                   }
                                 },
-                                "name": "intrinsicWidth",
+                                "name": "intrinsicHeight",
                                 "setter": {
                                   "componentName": "NumberSetter",
                                   "isRequired": true,
@@ -116,13 +116,10 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                   },
                   "name": "advertTime",
                   "setter": {
-                    "componentName": "CustomRadioSetter",
+                    "componentName": "RadioGroupSetter",
                     // "isRequired": false,
                     "initialValue": 3,
                     "props": {
-                      // defaultValue: 3,
-                      // label: '滚动时长',
-                      type: "button",
                       options: [
                         {
                           label: '慢速',
@@ -148,14 +145,21 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                     "label": {
                       "type": "i18n",
                       "en-US": "chooseTemplate",
-                      "zh-CN": "chooseTemplate"
+                      "zh-CN": "选择模板"
                     }
                   },
                   "name": "chooseTemplate",
                   "setter": {
-                    "componentName": "NumberSetter",
-                    "isRequired": false,
-                    "initialValue": 0
+                    "componentName": "RadioGroupSetter",
+                    // "isRequired": false,
+                    "initialValue": 2,
+                    "props": {
+                      options: [
+                        { label: '图片', value: 1 },
+                        { label: '轮播海报', value: 2 }
+                        // { label: '横向滑动',  value: 3 }
+                      ]
+                    }
                   }
                 },
                 {
@@ -163,7 +167,7 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                     "label": {
                       "type": "i18n",
                       "en-US": "borderRadius",
-                      "zh-CN": "borderRadius"
+                      "zh-CN": "图片圆角"
                     }
                   },
                   "name": "borderRadius",
@@ -178,7 +182,7 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                     "label": {
                       "type": "i18n",
                       "en-US": "imageMargin",
-                      "zh-CN": "imageMargin"
+                      "zh-CN": "图片边距"
                     }
                   },
                   "name": "imageMargin",
@@ -193,7 +197,7 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                     "label": {
                       "type": "i18n",
                       "en-US": "lineNum",
-                      "zh-CN": "lineNum"
+                      "zh-CN": "单行数量"
                     }
                   },
                   "name": "lineNum",
@@ -208,7 +212,7 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                     "label": {
                       "type": "i18n",
                       "en-US": "overlapHeight",
-                      "zh-CN": "overlapHeight"
+                      "zh-CN": "重叠高度"
                     }
                   },
                   "name": "overlapHeight",
