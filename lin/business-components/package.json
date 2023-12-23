@@ -1,6 +1,6 @@
 {
   "name": "@lowcode-lin/business-components",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "business-components",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -96,10 +96,10 @@
   },
   "componentConfig": {
     "isComponentLibrary": true,
-    "materialSchema": "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/assets-prod.json"
+    "materialSchema": "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/assets-prod.json"
   },
   "lcMeta": {
     "type": "component"
   },
-  "homepage": "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/index.html"
+  "homepage": "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/index.html"
 }

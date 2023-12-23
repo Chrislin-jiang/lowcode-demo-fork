@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import { Radio, Tooltip, Button } from 'antd';
+import { Radio, Button } from '@alifd/next';
 
 import './index.scss';
 
@@ -41,8 +41,17 @@ interface RadioSetterProps {
 // const validPlacements: TooltipPlacement[] = ['topLeft', 'top', 'topRight', 'leftTop', 'left', 'leftBottom', 'rightTop', 'right', 'rightBottom', 'bottomLeft', 'bottom', 'bottomRight'];
 
 const RadioSetter: React.FC<RadioSetterProps> = (props) => {
-  const { options = {}, onChange, value, defaultValue } = props;
-  const { radioStyle, type: optionType, content = [], disabled, showStyle = '' } = options;
+  const {
+    options: content,
+    type: optionType,
+    onChange,
+    value,
+    defaultValue,
+    radioStyle,
+    disabled,
+    showStyle,
+  } = props;
+  // const { radioStyle, type: optionType, content = [], disabled, showStyle = '' } = options;
 
   useEffect(() => {
     if (value === undefined && defaultValue) {
@@ -104,21 +113,22 @@ const RadioSetter: React.FC<RadioSetterProps> = (props) => {
         {content.map((item, index) => {
           const isActive = item.value === value;
           return (
-            <Tooltip
-              key={index}
-              overlayClassName="gscm-designer-radio-setter-tooltip"
-              title={item.tips}
-              // placement={item.placement || 'bottom'}
-              placement={(item.placement as TooltipPlacement) || 'bottom'}
+            <Button
+              className={`${isActive ? 'radio-setter-button-active' : ''}`}
+              onClick={() => onChange(item.value)}
+              style={radioStyle}
             >
-              <Button
-                className={`${isActive ? 'radio-setter-button-active' : ''}`}
-                onClick={() => onChange(item.value)}
-                style={radioStyle}
-              >
-                {item.label}
-              </Button>
-            </Tooltip>
+              {item.label}
+            </Button>
+            // <Tooltip
+            //   key={index}
+            //   overlayClassName="gscm-designer-radio-setter-tooltip"
+            //   title={item.tips}
+            //   // placement={item.placement || 'bottom'}
+            //   // placement={(item.placement as TooltipPlacement) || 'bottom'}
+            // >
+
+            // </Tooltip>
           );
         })}
       </div>
@@ -156,6 +166,7 @@ const RadioSetter: React.FC<RadioSetterProps> = (props) => {
     default:
       return renderDefaultRadioSetter();
   }
+  // return <Button>test</Button>;
 };
 
 export default React.memo(RadioSetter);

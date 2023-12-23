@@ -72,20 +72,20 @@
     },
     {
       "package": "@lowcode-lin/business-components",
-      "version": "0.1.4",
+      "version": "0.1.6",
       "library": "BizComps",
       "urls": [
-        "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/render/default/view.js",
-        "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/render/default/view.css"
+        "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/render/default/view.js",
+        "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/render/default/view.css"
       ],
       "editUrls": [
-        "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/view.js",
-        "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/view.css"
+        "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/view.js",
+        "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/view.css"
       ],
       "advancedUrls": {
         "default": [
-          "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/render/default/view.js",
-          "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/render/default/view.css"
+          "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/render/default/view.js",
+          "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/render/default/view.css"
         ]
       },
       "advancedEditUrls": {}
@@ -129,15 +129,15 @@
       "exportName": "LowcodeLinBusinessComponentsMeta",
       "npm": {
         "package": "@lowcode-lin/business-components",
-        "version": "0.1.4"
+        "version": "0.1.6"
       },
-      "url": "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/meta.js",
+      "url": "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/meta.js",
       "urls": {
-        "default": "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/meta.js"
+        "default": "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/meta.js"
       },
       "advancedUrls": {
         "default": [
-          "https://unpkg.com/@lowcode-lin/business-components@0.1.4/build/lowcode/meta.js"
+          "https://unpkg.com/@lowcode-lin/business-components@0.1.6/build/lowcode/meta.js"
         ]
       }
     }

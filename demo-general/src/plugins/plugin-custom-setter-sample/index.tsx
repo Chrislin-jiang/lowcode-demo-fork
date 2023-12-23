@@ -13,7 +13,7 @@ const CustomSetterSamplePlugin = (ctx: IPublicModelPluginContext) => {
       setters.registerSetter('TitleSetter', TitleSetter);
       setters.registerSetter('BehaviorSetter', BehaviorSetter);
       setters.registerSetter('CustomSetter', CustomSetter);
-      // setters.registerSetter('CustomRadioSetter', CustomRadioSetter);
+      setters.registerSetter('CustomRadioSetter', CustomRadioSetter);
     },
   };
 };
