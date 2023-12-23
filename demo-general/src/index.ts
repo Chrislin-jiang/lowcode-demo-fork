@@ -22,6 +22,7 @@ import SimulatorLocalePlugin from './plugins/plugin-simulator-locale';
 import lowcodePlugin from './plugins/plugin-lowcode-component';
 import appHelper from './appHelper';
 import './global.scss';
+import LowcodePluginPluginDemo from './plugins/plugin-demo';
 
 async function registerPlugins() {
   await plugins.register(InjectPlugin);
@@ -51,6 +52,8 @@ async function registerPlugins() {
   await plugins.register(DefaultSettersRegistryPlugin);
 
   await plugins.register(LogoSamplePlugin);
+
+  await plugins.register(LowcodePluginPluginDemo);
 
   await plugins.register(ComponentPanelPlugin);
 

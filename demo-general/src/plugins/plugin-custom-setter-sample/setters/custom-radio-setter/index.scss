@@ -1,0 +1,129 @@
+.gscm-designer-container {
+  .radio-image-warpper {
+    font-size: 12px;
+    margin-top: -12px;
+
+    .radio-image-top {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .radio-image-common {
+      height: 100%;
+      margin-top: 12px;
+      margin-right: 12px;
+      border-radius: 2px;
+      cursor: pointer;
+      text-align: center;
+
+      img {
+        width: 55px;
+        height: 34px;
+        border: 1px solid #505766;
+      }
+
+      .gscm-designer-font {
+        width: 55px;
+        height: 34px;
+        line-height: 34px;
+        display: inline-block;
+        font-size: 26px;
+      }
+    }
+
+    .radio-image-enus {
+      margin-right: 0;
+      width: 50%;
+      min-width: 50%;
+      max-width: 50%;
+    }
+
+    .radio-image-label {
+      margin-top: 2px;
+      text-align: center;
+    }
+
+    .radio-image-active,
+    .radio-image-inactive:hover {
+
+      .gscm-designer-font,
+      img {
+        border: 1px solid #505766;
+      }
+
+      .radio-image-label {
+        color: #505766;
+        font-weight: 600;
+      }
+    }
+
+    .radio-image-inactive {
+
+      .gscm-designer-font,
+      img {
+        border: 1px solid #E9E9E9;
+      }
+
+      .radio-image-label {
+        color: #999999;
+      }
+    }
+
+    .radio-image-description {
+      margin-top: 12px;
+      color: #999999;
+    }
+
+    .vertical {
+      width: 100%;
+      margin-right: 0;
+
+      &:not(:first-child) {
+        margin-top: 12px;
+      }
+
+      img {
+        width: 100%;
+        padding: 3px;
+      }
+    }
+  }
+
+  .radio-setter-button-tips-wrapper {
+    margin-top: 20px;
+
+    .wui-button {
+      border-radius: 0;
+      width: 65px;
+      height: 32px;
+      font-size: 14px;
+      border: 1px solid #D9D9D9;
+
+      &:first-child {
+        border-radius: 4px 0 0 4px;
+      }
+
+      &:last-child {
+        border-radius: 0 4px 4px 0;
+      }
+
+      &:not(:first-child) {
+        border-left-width: 0.5px;
+      }
+
+      &:not(:last-child) {
+        border-right-width: 0.5px;
+      }
+    }
+
+    .radio-setter-button-active {
+      border-color: #505766;
+    }
+  }
+}
+
+.gscm-designer-radio-setter-tooltip {
+  .wui-tooltip-inner {
+    padding: 4px 6px;
+  }
+}
