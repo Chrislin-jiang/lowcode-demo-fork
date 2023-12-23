@@ -126,7 +126,7 @@
       }
     },
     {
-      "exportName": "LowcodeBusinessComponentsMeta",
+      "exportName": "LowcodeLinBusinessComponentsMeta",
       "npm": {
         "package": "@lowcode-lin/business-components",
         "version": "0.1.4"
