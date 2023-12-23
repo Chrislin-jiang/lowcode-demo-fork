@@ -8,8 +8,8 @@ const ColorfulButtonMeta: IPublicTypeComponentMetadata = {
   "screenshot": "",
   "devMode": "proCode",
   "npm": {
-    "package": "business-components",
-    "version": "0.1.0",
+    "package": "@lowcode-lin/business-components",
+    "version": "0.1.4",
     "exportName": "ColorfulButton",
     "main": "src\\index.tsx",
     "destructuring": true,

@@ -9,7 +9,7 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
   "devMode": "proCode",
   "npm": {
     "package": "@lowcode-lin/business-components",
-    "version": "0.1.1",
+    "version": "0.1.4",
     "exportName": "ImageAdvert",
     "main": "src\\index.tsx",
     "destructuring": true,
@@ -116,31 +116,9 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                   },
                   "name": "advertTime",
                   "setter": {
-                    "componentName": "CustomRadioSetter",
-                    // "isRequired": false,
-                    // "initialValue": 0,
-                    defaultValue: 3,
-                    label: '滚动时长',
-                    options: {
-                      content: [
-                        {
-                          label: '慢速',
-                          value: 4,
-                          tips: '时长4s'
-                        },
-                        {
-                          label: '常规',
-                          value: 3,
-                          tips: '时长3s'
-                        },
-                        {
-                          label: '快速',
-                          value: 1.5,
-                          tips: '时长1.5s'
-                        }
-                      ],
-                      type: 'button'
-                    }
+                    "componentName": "NumberSetter",
+                    "isRequired": false,
+                    "initialValue": 0
                   }
                 },
                 {

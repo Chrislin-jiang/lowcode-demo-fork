@@ -8,8 +8,8 @@ const ColorfulInputMeta: IPublicTypeComponentMetadata = {
   "screenshot": "",
   "devMode": "proCode",
   "npm": {
-    "package": "business-components",
-    "version": "0.1.0",
+    "package": "@lowcode-lin/business-components",
+    "version": "0.1.4",
     "exportName": "ColorfulInput",
     "main": "src\\index.tsx",
     "destructuring": true,
