@@ -193,6 +193,13 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                   }
                 },
                 {
+                  "condition": (target) => {
+                    if (target.getParent().getPropValue("chooseTemplate") === 1) {
+                      return true;
+                    } else {
+                      return false;
+                    }
+                  },
                   "title": {
                     "label": {
                       "type": "i18n",
@@ -202,9 +209,19 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                   },
                   "name": "lineNum",
                   "setter": {
-                    "componentName": "NumberSetter",
-                    "isRequired": false,
-                    "initialValue": 0
+                    "componentName": "RadioGroupSetter",
+                    // "isRequired": false,
+                    "initialValue": 2,
+                    "props": {
+                      options: [
+                        { label: '1', value: 1 },
+                        { label: '2', value: 2 },
+                        { label: '3', value: 3 },
+                        { label: '4', value: 4 },
+                        { label: '5', value: 5 },
+                        { label: '6', value: 6 }
+                      ]
+                    }
                   }
                 },
                 {
@@ -233,36 +250,38 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
           "isRequired": true
         }
       },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "isDesigner",
-            "zh-CN": "isDesigner"
-          }
-        },
-        "name": "isDesigner",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      },
-      {
-        "title": {
-          "label": {
-            "type": "i18n",
-            "en-US": "isPreview",
-            "zh-CN": "isPreview"
-          }
-        },
-        "name": "isPreview",
-        "setter": {
-          "componentName": "BoolSetter",
-          "isRequired": false,
-          "initialValue": false
-        }
-      }
+      // {
+      //   "title": {
+      //     "label": {
+      //       "type": "i18n",
+      //       "en-US": "isDesigner",
+      //       "zh-CN": "isDesigner"
+      //     }
+      //   },
+      //   "name": "isDesigner",
+      //   "setter": {
+      //     "componentName": "BoolSetter",
+      //     "isRequired": false,
+      //     "initialValue": false
+      //   }
+      // },
+      // {
+      //   "title": {
+      //     "label": {
+      //       "type": "i18n",
+      //       "en-US": "isPreview",
+      //       "zh-CN": "isPreview"
+      //     }
+      //   },
+      //   "name": "isPreview",
+      //   "setter": {
+      //     "componentName": "BoolSetter",
+      //     "isRequired": false,
+      //     "initialValue": false
+      //   },
+      //   "defaultCollapsed": true
+      //   // "display": "block"
+      // }
     ],
     "supports": {
       "style": true
