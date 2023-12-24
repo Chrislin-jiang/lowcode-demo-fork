@@ -233,7 +233,7 @@
                     "right": 1,
                     "height": 1,
                     "width": 1,
-                    "image": "https://img01.yzcdn.cn/upload_files/2023/11/07/f6f40a12d0e407df7206162fee241f08.png",
+                    "image": "http://localhost:3006/1703433597182.png",
                     "targetUrl": {}
                   },
                   {
@@ -243,14 +243,14 @@
                     "right": 2,
                     "height": 1,
                     "width": 1,
-                    "image": "https://img01.yzcdn.cn/upload_files/2023/11/07/f6f40a12d0e407df7206162fee241f08.png",
+                    "image": "http://localhost:3006/1703433631055.jpeg",
                     "targetUrl": {}
                   }
                 ]
               },
               "imgMargin": 0,
               "imgRadius": 0,
-              "image": "http://localhost:3006/1703429668622.jpeg",
+              "image": "http://localhost:3006/1703433631055.jpeg",
               "targetUrl": ""
             }
           },
