@@ -118,3 +118,10 @@ async function registerPlugins() {
     appHelper,
   });
 })();
+
+// todo
+document.title = "Hello World";
+const link = document.querySelector<HTMLLinkElement>("link[rel~='icon']");
+if (link) {
+  link.href = "";
+}
