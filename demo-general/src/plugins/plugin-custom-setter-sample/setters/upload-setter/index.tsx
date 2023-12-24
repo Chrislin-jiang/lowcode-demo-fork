@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Upload } from '@alifd/next';
+import { event } from '@alilc/lowcode-engine';
 
 const defaultImage = 'https://img01.yzcdn.cn/upload_files/2023/11/07/f6f40a12d0e407df7206162fee241f08.png';
 
@@ -13,7 +14,18 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
   console.log("gjl-FileUpload-props", props);
   console.log("gjl-FileUpload-props.value", props.value);
 
-  const { value, onChange } = props;
+  const { value, onChange, field } = props;
+
+  useEffect(() => {
+    const changeSelectValue = (value: string) => {
+      onChange(value);
+    }
+    event.on(`common:custom-radio-setter.changeSelectValue`, changeSelectValue);
+
+    return () => {
+      event.off(`common:custom-radio-setter.changeSelectValue`, changeSelectValue);
+    }
+  }, []);
 
   const handleBeforeUpload = (file): boolean | PromiseLike<void> => {
     // 在此处执行文件上传前的校验等操作
@@ -24,6 +36,7 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
     // 在此处处理文件上传成功后的逻辑
     // onUploadSuccess(file);
     onChange(file.imgURL);
+    event.emit('custom-radio-setter.bindEvent', file.imgURL, 'custom-radio-setter.bindEvent');
   };
 
   const handleUploadError = (file): void => {

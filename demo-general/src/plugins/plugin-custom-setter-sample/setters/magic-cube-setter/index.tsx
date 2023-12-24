@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { produce } from 'immer';
 import { Select } from '@alifd/next';
+import { event } from '@alilc/lowcode-engine';
+import { cloneDeep } from 'lodash';
+import { useLatest } from 'ahooks';
 
 import CustomLayout from './CustomLayout';
 import { cubeRowsList, initialModels, modelOptions } from './helper';
@@ -8,6 +11,8 @@ import { cubeRowsList, initialModels, modelOptions } from './helper';
 // import useLatest from '../../hooks/useLatest';
 
 import './index.scss';
+
+const SETTER_NAME = 'custom-radio-setter';
 
 interface CubeValue {
   list?: any[];
@@ -21,6 +26,7 @@ interface MagicCubeSetterProps {
   // setSelectedNode: (node: any) => void;
   type: string;
   name: string;
+  initialValue?: CubeValue;
   defaultValue?: CubeValue;
   value: CubeValue,
   // setter 唯一输出
@@ -29,11 +35,11 @@ interface MagicCubeSetterProps {
 
 const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
   // const { selectedNode, setSelectedNode, type, name, defaultValue } = props;
-  const { value, defaultValue, onChange } = props;
-  const [cubeValue, setCubeValue] = useState<CubeValue>({});
+  const { value: cubeValue, initialValue: defaultValue, onChange } = props;
+  // const [cubeValue, setCubeValue] = useState<CubeValue>(value);
   const [activeItem, setActiveItem] = useState(0);
-  // const cubeValueRef = useLatest(cubeValue);
-  // const activeItemRef = useLatest(activeItem);
+  const cubeValueRef = useLatest(cubeValue);
+  const activeItemRef = useLatest(activeItem);
   // const selectedNodeRef = useLatest(selectedNode);
   const layoutRef = useRef<any>(null);
 
@@ -44,27 +50,30 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
   // }, [selectedNode]);
 
   useEffect(() => {
-    if (value === undefined && defaultValue) {
+    if (cubeValue === undefined && defaultValue) {
       onChange(defaultValue);
     }
-  }, []);
 
-  useEffect(() => {
-    const changeImageInfo = (fileJson: any) => {
-      // TODO fileKey 等等的处理
-      const value = fileJson.filePath;
-      changeListItem('image', value);
+    const bindEvent = (value: string) => {
+      console.log("gjl-common:custom-radio-setter.bindEvent-on", value);
+      let newList = cloneDeep(cubeValueRef.current);
+      const currentIdx = activeItemRef.current;
+      if (newList?.list[currentIdx]) {
+        newList.list[currentIdx].image = value;
+      }
+      onChange(newList);
     };
 
-    const changeTargetUrl = (res: any) => {
-      changeListItem('targetUrl', res);
-    };
-    // EventManager.on('fileUploadCallback', changeImageInfo);
-    // EventManager.on('jumpPageCallback', changeTargetUrl);
-    // return () => {
-    //   EventManager.off('fileUploadCallback', changeImageInfo);
-    //   EventManager.off('jumpPageCallback', changeTargetUrl);
-    // };
+    // 这里由于面板上会有多个 setter，这里我用 field.id 来标记 setter 名
+    // const emitEventName = `${SETTER_NAME}-${props.field.id}`;
+    const emitEventName = `${SETTER_NAME}`;
+    // event.on(`${emitEventName}.bindEvent`, bindEvent);
+    event.on(`common:custom-radio-setter.bindEvent`, bindEvent);
+
+    return () => {
+      // setter 是以实例为单位的，每个 setter 注销的时候需要把事件也注销掉，避免事件池过多
+      event.off(`common:custom-radio-setter.bindEvent`, bindEvent);
+    }
   }, []);
 
   const changeModel = (model: string) => {
@@ -88,7 +97,8 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
       // const newItem = produce(selectedNode, (draft) => {
       //   draft[type][name] = newValue;
       // });
-      setCubeValue(newValue);
+      // setCubeValue(newValue);
+      onChange(newValue);
       // setSelectedNode(newItem);
     }
   };
@@ -101,7 +111,8 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
       row: value,
       col: value,
     };
-    setCubeValue(newValue);
+    // setCubeValue(newValue);
+    onChange(newValue);
     // const newItem = produce(selectedNode, (draft) => {
     //   draft[type][name] = newValue;
     // });
@@ -117,8 +128,9 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
     // const selectValue = cubeValueRef.current.list?.[item]?.['targetUrl']?.selectValue;
     // EventManager.emit('changeSelectValue', selectValue);
 
-    // const activeImageUrl = cubeValueRef.current.list?.[item]?.['image'];
+    const activeImageUrl = cubeValueRef.current.list?.[item]?.['image'];
     // EventManager.emit('changeCurrentImage', activeImageUrl);
+    event.emit('custom-radio-setter.changeSelectValue', activeImageUrl)
   };
 
   const changeListItem = (key: string, value: any) => {
