@@ -1,0 +1,113 @@
+.magic-cube-setter {
+
+  .common {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+
+    label {
+      width: 80px;
+    }
+  }
+
+  .custom-design-tips {
+    margin: 12px 0 6px 0;
+    color: #7d7e80;
+  }
+}
+
+.custom-layout {
+  // width: 220px;
+  position: relative;
+  display: inline-block;
+  border-top: 1px solid #e5e5e5;
+  border-left: 1px solid #e5e5e5;
+  // margin-right: 6px;
+
+  .custom-layout-ul {
+    display: flex;
+  }
+
+  .icon-jia1 {
+    font-size: 12px;
+  }
+
+  .wrap-item {
+    background: #f8f8f8;
+    border-bottom: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+
+    color: #bbb;
+    cursor: pointer;
+
+    i {
+      pointer-events: none;
+    }
+  }
+
+  .move-wrap {
+    background: #e0edff;
+
+    i {
+      display: none;
+    }
+  }
+
+  .edit-wrap {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ebedf0;
+    font-size: 10px;
+    color: #7d7e80;
+    z-index: 2;
+    cursor: pointer;
+    text-align: center;
+
+    .edit-wrap-close {
+      display: none;
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      border-radius: 50%;
+      background: #b3b3b3;
+      color: #fff;
+      font-size: 12px;
+      text-align: center;
+      z-index: 4;
+    }
+
+    .edit-warp-text {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-guanbi {
+      font-size: 10px;
+    }
+  }
+
+  .edit-wrap-active {
+    background: #e0edff;
+    border: 1px solid #155bd4;
+    color: #155bd4;
+    z-index: 5;
+
+    &:hover {
+      .edit-wrap-close {
+        display: block;
+      }
+    }
+  }
+}
+
+.cube-image-and-target-url {
+  display: flex;
+  flex-direction: column;
+}

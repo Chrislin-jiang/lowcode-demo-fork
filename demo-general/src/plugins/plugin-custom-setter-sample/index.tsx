@@ -4,6 +4,7 @@ import BehaviorSetter from './setters/behavior-setter';
 import CustomSetter from './setters/custom-setter';
 import CustomRadioSetter from './setters/custom-radio-setter';
 import MagicCubeSetter from './setters/magic-cube-setter';
+import UploadSetter from './setters/upload-setter';
 
 // 保存功能示例
 const CustomSetterSamplePlugin = (ctx: IPublicModelPluginContext) => {
@@ -16,6 +17,7 @@ const CustomSetterSamplePlugin = (ctx: IPublicModelPluginContext) => {
       setters.registerSetter('CustomSetter', CustomSetter);
       setters.registerSetter('CustomRadioSetter', CustomRadioSetter);
       setters.registerSetter('MagicCubeSetter', MagicCubeSetter);
+      setters.registerSetter('UploadSetter', UploadSetter);
     },
   };
 };

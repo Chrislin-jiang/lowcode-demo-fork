@@ -34,7 +34,7 @@ export const resetSchema = async (scenarioName: string = 'unknown') => {
         },
       })
     })
-  } catch(err) {
+  } catch (err) {
     return;
   }
   const defaultSchema = generateProjectSchema(DefaultPageSchema, DefaultI18nSchema);
@@ -92,7 +92,7 @@ export const getPackagesFromLocalStorage = (scenarioName: string) => {
   return JSON.parse(window.localStorage.getItem(getLSName(scenarioName, 'packages')) || '{}');
 }
 
-export const getProjectSchema = async (scenarioName: string = 'unknown') : Promise<IPublicTypeProjectSchema> => {
+export const getProjectSchema = async (scenarioName: string = 'unknown'): Promise<IPublicTypeProjectSchema> => {
   const pageSchema = await getPageSchema(scenarioName);
   return generateProjectSchema(pageSchema, DefaultI18nSchema);
 };
@@ -116,3 +116,8 @@ export const setPreviewLocale = (scenarioName: string, locale: string) => {
   window.localStorage.setItem(key, locale || 'zh-CN');
   window.location.reload();
 }
+
+export const uploadFiles = async (scenarioName: string = 'unknown') => {
+  // todo
+  Message.success('上传成功');
+};

@@ -10,22 +10,26 @@ import { cubeRowsList, initialModels, modelOptions } from './helper';
 import './index.scss';
 
 interface CubeValue {
-  list: any[];
-  row: number;
-  col: number;
-  model: string;
+  list?: any[];
+  row?: number;
+  col?: number;
+  model?: string;
 }
 
 interface MagicCubeSetterProps {
-  selectedNode: any;
-  setSelectedNode: (node: any) => void;
+  // selectedNode: any;
+  // setSelectedNode: (node: any) => void;
   type: string;
   name: string;
-  defaultValue?: {};
+  defaultValue?: CubeValue;
+  value: CubeValue,
+  // setter 唯一输出
+  onChange: (val: string) => void;
 }
 
 const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
-  const { selectedNode, setSelectedNode, type, name, defaultValue } = props;
+  // const { selectedNode, setSelectedNode, type, name, defaultValue } = props;
+  const { value, defaultValue, onChange } = props;
   const [cubeValue, setCubeValue] = useState<CubeValue>({});
   const [activeItem, setActiveItem] = useState(0);
   // const cubeValueRef = useLatest(cubeValue);
@@ -33,11 +37,17 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
   // const selectedNodeRef = useLatest(selectedNode);
   const layoutRef = useRef<any>(null);
 
+  // useEffect(() => {
+  //   if (selectedNode && selectedNode[type]) {
+  //     setCubeValue(selectedNode[type][name] ?? defaultValue ?? {});
+  //   }
+  // }, [selectedNode]);
+
   useEffect(() => {
-    if (selectedNode && selectedNode[type]) {
-      setCubeValue(selectedNode[type][name] ?? defaultValue ?? {});
+    if (value === undefined && defaultValue) {
+      onChange(defaultValue);
     }
-  }, [selectedNode]);
+  }, []);
 
   useEffect(() => {
     const changeImageInfo = (fileJson: any) => {
@@ -75,11 +85,11 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
       } else {
         newValue.list = JSON.parse(JSON.stringify(initialModels[model]));
       }
-      const newItem = produce(selectedNode, (draft) => {
-        draft[type][name] = newValue;
-      });
+      // const newItem = produce(selectedNode, (draft) => {
+      //   draft[type][name] = newValue;
+      // });
       setCubeValue(newValue);
-      setSelectedNode(newItem);
+      // setSelectedNode(newItem);
     }
   };
 
@@ -92,10 +102,10 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
       col: value,
     };
     setCubeValue(newValue);
-    const newItem = produce(selectedNode, (draft) => {
-      draft[type][name] = newValue;
-    });
-    setSelectedNode(newItem);
+    // const newItem = produce(selectedNode, (draft) => {
+    //   draft[type][name] = newValue;
+    // });
+    // setSelectedNode(newItem);
 
     layoutRef.current?.reset();
   };
@@ -143,12 +153,12 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
       </div>
       <CustomLayout
         ref={layoutRef}
-        row={cubeValue.row}
-        col={cubeValue.col}
-        model={cubeValue.model}
+        row={cubeValue.row || 1}
+        col={cubeValue.col || 2}
+        model={cubeValue.model || 'magicCube1'}
         list={cubeValue.list || []}
         onCurIndex={onCurIndex}
-        selectedNodeId={selectedNode.id}
+        // selectedNodeId={selectedNode.id}
         {...props}
       />
 

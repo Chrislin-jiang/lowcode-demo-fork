@@ -1,6 +1,8 @@
 
 import { IPublicTypeComponentMetadata, IPublicTypeSnippet } from '@alilc/lowcode-types';
 
+const defaultImage = 'https://img01.yzcdn.cn/upload_files/2023/11/07/f6f40a12d0e407df7206162fee241f08.png';
+
 const MagicCubeMeta: IPublicTypeComponentMetadata = {
   "componentName": "MagicCube",
   "title": "MagicCube",
@@ -66,174 +68,233 @@ const MagicCubeMeta: IPublicTypeComponentMetadata = {
                     "label": {
                       "type": "i18n",
                       "en-US": "cube",
-                      "zh-CN": "cube"
+                      "zh-CN": "魔方布局"
                     }
                   },
                   "name": "cube",
                   "setter": {
-                    "componentName": "ObjectSetter",
-                    "props": {
-                      "config": {
-                        "items": [
-                          {
-                            "title": {
-                              "label": {
-                                "type": "i18n",
-                                "en-US": "row",
-                                "zh-CN": "row"
-                              }
-                            },
-                            "name": "row",
-                            "setter": {
-                              "componentName": "NumberSetter",
-                              "isRequired": true,
-                              "initialValue": 0
-                            }
-                          },
-                          {
-                            "title": {
-                              "label": {
-                                "type": "i18n",
-                                "en-US": "col",
-                                "zh-CN": "col"
-                              }
-                            },
-                            "name": "col",
-                            "setter": {
-                              "componentName": "NumberSetter",
-                              "isRequired": true,
-                              "initialValue": 0
-                            }
-                          },
-                          {
-                            "title": {
-                              "label": {
-                                "type": "i18n",
-                                "en-US": "list",
-                                "zh-CN": "list"
-                              }
-                            },
-                            "name": "list",
-                            "setter": {
-                              "componentName": "ArraySetter",
-                              "props": {
-                                "itemSetter": {
-                                  "componentName": "ObjectSetter",
-                                  "props": {
-                                    "config": {
-                                      "items": [
-                                        {
-                                          "title": {
-                                            "label": {
-                                              "type": "i18n",
-                                              "en-US": "top",
-                                              "zh-CN": "top"
-                                            }
-                                          },
-                                          "name": "top",
-                                          "setter": {
-                                            "componentName": "NumberSetter",
-                                            "isRequired": true,
-                                            "initialValue": 0
-                                          }
-                                        },
-                                        {
-                                          "title": {
-                                            "label": {
-                                              "type": "i18n",
-                                              "en-US": "left",
-                                              "zh-CN": "left"
-                                            }
-                                          },
-                                          "name": "left",
-                                          "setter": {
-                                            "componentName": "NumberSetter",
-                                            "isRequired": true,
-                                            "initialValue": 0
-                                          }
-                                        },
-                                        {
-                                          "title": {
-                                            "label": {
-                                              "type": "i18n",
-                                              "en-US": "width",
-                                              "zh-CN": "width"
-                                            }
-                                          },
-                                          "name": "width",
-                                          "setter": {
-                                            "componentName": "NumberSetter",
-                                            "isRequired": true,
-                                            "initialValue": 0
-                                          }
-                                        },
-                                        {
-                                          "title": {
-                                            "label": {
-                                              "type": "i18n",
-                                              "en-US": "height",
-                                              "zh-CN": "height"
-                                            }
-                                          },
-                                          "name": "height",
-                                          "setter": {
-                                            "componentName": "NumberSetter",
-                                            "isRequired": true,
-                                            "initialValue": 0
-                                          }
-                                        },
-                                        {
-                                          "title": {
-                                            "label": {
-                                              "type": "i18n",
-                                              "en-US": "image",
-                                              "zh-CN": "image"
-                                            }
-                                          },
-                                          "name": "image",
-                                          "setter": {
-                                            "componentName": "StringSetter",
-                                            "isRequired": true,
-                                            "initialValue": ""
-                                          }
-                                        },
-                                        {
-                                          "title": {
-                                            "label": {
-                                              "type": "i18n",
-                                              "en-US": "targetUrl",
-                                              "zh-CN": "targetUrl"
-                                            }
-                                          },
-                                          "name": "targetUrl",
-                                          "setter": {
-                                            "componentName": "StringSetter",
-                                            "isRequired": false,
-                                            "initialValue": ""
-                                          }
-                                        }
-                                      ],
-                                      "extraSetter": {
-                                        "componentName": "MixedSetter",
-                                        "isRequired": false,
-                                        "props": {}
-                                      }
-                                    }
-                                  }
-                                }
-                              },
-                              "isRequired": true,
-                              "initialValue": []
-                            }
-                          }
-                        ],
-                        "extraSetter": {
-                          "componentName": "MixedSetter",
-                          "isRequired": false,
-                          "props": {}
+                    "componentName": "MagicCubeSetter",
+                    // todo
+                    "isDynamic": false,
+                    "initialValue": {
+                      "model": "magicCube1",
+                      "row": 1,
+                      "col": 2,
+                      "list": [
+                        {
+                          "top": 0,
+                          "left": 0,
+                          "bottom": 1,
+                          "right": 1,
+                          "height": 1,
+                          "width": 1,
+                          "image": defaultImage,
+                          "targetUrl": {}
+                        },
+                        {
+                          "top": 0,
+                          "left": 1,
+                          "bottom": 1,
+                          "right": 2,
+                          "height": 1,
+                          "width": 1,
+                          "image": defaultImage,
+                          "targetUrl": {}
                         }
-                      }
+                      ]
+                    },
+                    // "props": {
+                    //   "config": {
+                    //     "items": [
+                    //       {
+                    //         "title": {
+                    //           "label": {
+                    //             "type": "i18n",
+                    //             "en-US": "row",
+                    //             "zh-CN": "row"
+                    //           }
+                    //         },
+                    //         "name": "row",
+                    //         "setter": {
+                    //           "componentName": "NumberSetter",
+                    //           "isRequired": true,
+                    //           "initialValue": 0
+                    //         }
+                    //       },
+                    //       {
+                    //         "title": {
+                    //           "label": {
+                    //             "type": "i18n",
+                    //             "en-US": "col",
+                    //             "zh-CN": "col"
+                    //           }
+                    //         },
+                    //         "name": "col",
+                    //         "setter": {
+                    //           "componentName": "NumberSetter",
+                    //           "isRequired": true,
+                    //           "initialValue": 0
+                    //         }
+                    //       },
+                    //       {
+                    //         "title": {
+                    //           "label": {
+                    //             "type": "i18n",
+                    //             "en-US": "list",
+                    //             "zh-CN": "list"
+                    //           }
+                    //         },
+                    //         "name": "list",
+                    //         "setter": {
+                    //           "componentName": "ArraySetter",
+                    //           "props": {
+                    //             "itemSetter": {
+                    //               "componentName": "ObjectSetter",
+                    //               "props": {
+                    //                 "config": {
+                    //                   "items": [
+                    //                     {
+                    //                       "title": {
+                    //                         "label": {
+                    //                           "type": "i18n",
+                    //                           "en-US": "top",
+                    //                           "zh-CN": "top"
+                    //                         }
+                    //                       },
+                    //                       "name": "top",
+                    //                       "setter": {
+                    //                         "componentName": "NumberSetter",
+                    //                         "isRequired": true,
+                    //                         "initialValue": 0
+                    //                       }
+                    //                     },
+                    //                     {
+                    //                       "title": {
+                    //                         "label": {
+                    //                           "type": "i18n",
+                    //                           "en-US": "left",
+                    //                           "zh-CN": "left"
+                    //                         }
+                    //                       },
+                    //                       "name": "left",
+                    //                       "setter": {
+                    //                         "componentName": "NumberSetter",
+                    //                         "isRequired": true,
+                    //                         "initialValue": 0
+                    //                       }
+                    //                     },
+                    //                     {
+                    //                       "title": {
+                    //                         "label": {
+                    //                           "type": "i18n",
+                    //                           "en-US": "width",
+                    //                           "zh-CN": "width"
+                    //                         }
+                    //                       },
+                    //                       "name": "width",
+                    //                       "setter": {
+                    //                         "componentName": "NumberSetter",
+                    //                         "isRequired": true,
+                    //                         "initialValue": 0
+                    //                       }
+                    //                     },
+                    //                     {
+                    //                       "title": {
+                    //                         "label": {
+                    //                           "type": "i18n",
+                    //                           "en-US": "height",
+                    //                           "zh-CN": "height"
+                    //                         }
+                    //                       },
+                    //                       "name": "height",
+                    //                       "setter": {
+                    //                         "componentName": "NumberSetter",
+                    //                         "isRequired": true,
+                    //                         "initialValue": 0
+                    //                       }
+                    //                     },
+                    //                     {
+                    //                       "title": {
+                    //                         "label": {
+                    //                           "type": "i18n",
+                    //                           "en-US": "image",
+                    //                           "zh-CN": "image"
+                    //                         }
+                    //                       },
+                    //                       "name": "image",
+                    //                       "setter": {
+                    //                         "componentName": "StringSetter",
+                    //                         "isRequired": true,
+                    //                         "initialValue": ""
+                    //                       }
+                    //                     },
+                    //                     {
+                    //                       "title": {
+                    //                         "label": {
+                    //                           "type": "i18n",
+                    //                           "en-US": "targetUrl",
+                    //                           "zh-CN": "targetUrl"
+                    //                         }
+                    //                       },
+                    //                       "name": "targetUrl",
+                    //                       "setter": {
+                    //                         "componentName": "StringSetter",
+                    //                         "isRequired": false,
+                    //                         "initialValue": ""
+                    //                       }
+                    //                     }
+                    //                   ],
+                    //                   "extraSetter": {
+                    //                     "componentName": "MixedSetter",
+                    //                     "isRequired": false,
+                    //                     "props": {}
+                    //                   }
+                    //                 }
+                    //               }
+                    //             }
+                    //           },
+                    //           "isRequired": true,
+                    //           "initialValue": []
+                    //         }
+                    //       }
+                    //     ],
+                    //     "extraSetter": {
+                    //       "componentName": "MixedSetter",
+                    //       "isRequired": false,
+                    //       "props": {}
+                    //     }
+                    //   }
+                    // }
+                  }
+                },
+                {
+                  "title": {
+                    "label": {
+                      "type": "i18n",
+                      "en-US": "image",
+                      "zh-CN": "图片"
                     }
+                  },
+                  "name": "image",
+                  "setter": {
+                    "componentName": "UploadSetter",
+                    "isRequired": true,
+                    "initialValue": defaultImage
+                  }
+                },
+                {
+                  "title": {
+                    "label": {
+                      "type": "i18n",
+                      "en-US": "targetUrl",
+                      "zh-CN": "跳转链接"
+                    }
+                  },
+                  "name": "targetUrl",
+                  "setter": {
+                    "componentName": "StringSetter",
+                    "isRequired": true,
+                    "initialValue": ''
                   }
                 },
                 {
@@ -241,7 +302,7 @@ const MagicCubeMeta: IPublicTypeComponentMetadata = {
                     "label": {
                       "type": "i18n",
                       "en-US": "imgMargin",
-                      "zh-CN": "imgMargin"
+                      "zh-CN": "图片间隙"
                     }
                   },
                   "name": "imgMargin",
@@ -256,7 +317,7 @@ const MagicCubeMeta: IPublicTypeComponentMetadata = {
                     "label": {
                       "type": "i18n",
                       "en-US": "imgRadius",
-                      "zh-CN": "imgRadius"
+                      "zh-CN": "页面间距"
                     }
                   },
                   "name": "imgRadius",
