@@ -1,0 +1,30 @@
+.magic-cube {
+  margin: 0 var(--theme-page-padding) var(--theme-components-margin);
+
+  .cube-wrap {
+    border-radius: var(--theme-normal-border-radius);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .cube-item {
+      position: absolute;
+      box-sizing: border-box;
+
+      .cube-item-wrap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: cover;
+
+        .cube-img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
