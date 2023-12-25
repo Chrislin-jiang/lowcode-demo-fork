@@ -20,10 +20,10 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
     const changeSelectValue = (value: string) => {
       onChange(value);
     }
-    event.on(`common:custom-radio-setter.changeSelectValue`, changeSelectValue);
+    event.on(`common:magic-cube-setter.changeSelectValue`, changeSelectValue);
 
     return () => {
-      event.off(`common:custom-radio-setter.changeSelectValue`, changeSelectValue);
+      event.off(`common:magic-cube-setter.changeSelectValue`, changeSelectValue);
     }
   }, []);
 
@@ -36,7 +36,7 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
     // 在此处处理文件上传成功后的逻辑
     // onUploadSuccess(file);
     onChange(file.imgURL);
-    event.emit('custom-radio-setter.bindEvent', file.imgURL, 'custom-radio-setter.bindEvent');
+    event.emit('magic-cube-setter.bindEvent', file.imgURL, 'magic-cube-setter.bindEvent');
   };
 
   const handleUploadError = (file): void => {

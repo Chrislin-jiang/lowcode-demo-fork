@@ -12,7 +12,7 @@ import { cubeRowsList, initialModels, modelOptions } from './helper';
 
 import './index.scss';
 
-const SETTER_NAME = 'custom-radio-setter';
+const SETTER_NAME = 'magic-cube-setter';
 
 interface CubeValue {
   list?: any[];
@@ -55,7 +55,7 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
     }
 
     const bindEvent = (value: string) => {
-      console.log("gjl-common:custom-radio-setter.bindEvent-on", value);
+      console.log("gjl-common:magic-cube-setter.bindEvent-on", value);
       let newList = cloneDeep(cubeValueRef.current);
       const currentIdx = activeItemRef.current;
       if (newList?.list[currentIdx]) {
@@ -68,11 +68,11 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
     // const emitEventName = `${SETTER_NAME}-${props.field.id}`;
     const emitEventName = `${SETTER_NAME}`;
     // event.on(`${emitEventName}.bindEvent`, bindEvent);
-    event.on(`common:custom-radio-setter.bindEvent`, bindEvent);
+    event.on(`common:magic-cube-setter.bindEvent`, bindEvent);
 
     return () => {
       // setter 是以实例为单位的，每个 setter 注销的时候需要把事件也注销掉，避免事件池过多
-      event.off(`common:custom-radio-setter.bindEvent`, bindEvent);
+      event.off(`common:magic-cube-setter.bindEvent`, bindEvent);
     }
   }, []);
 
@@ -130,7 +130,7 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
 
     const activeImageUrl = cubeValueRef.current.list?.[item]?.['image'];
     // EventManager.emit('changeCurrentImage', activeImageUrl);
-    event.emit('custom-radio-setter.changeSelectValue', activeImageUrl)
+    event.emit('magic-cube-setter.changeSelectValue', activeImageUrl)
   };
 
   const changeListItem = (key: string, value: any) => {
