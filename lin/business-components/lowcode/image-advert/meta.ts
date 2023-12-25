@@ -52,47 +52,47 @@ const ImageAdvertMeta: IPublicTypeComponentMetadata = {
                                 "title": {
                                   "label": {
                                     "type": "i18n",
-                                    "en-US": "imageUrl",
-                                    "zh-CN": "图片地址"
+                                    "en-US": "imageInfo",
+                                    "zh-CN": "上传图片"
                                   }
                                 },
-                                "name": "imageUrl",
+                                "name": "imageInfo",
                                 "setter": {
-                                  "componentName": "StringSetter",
+                                  "componentName": "UploadSetter",
                                   "isRequired": true,
                                   "initialValue": ""
                                 }
                               },
-                              {
-                                "title": {
-                                  "label": {
-                                    "type": "i18n",
-                                    "en-US": "intrinsicWidth",
-                                    "zh-CN": "原始宽度"
-                                  }
-                                },
-                                "name": "intrinsicWidth",
-                                "setter": {
-                                  "componentName": "NumberSetter",
-                                  "isRequired": true,
-                                  "initialValue": 0
-                                }
-                              },
-                              {
-                                "title": {
-                                  "label": {
-                                    "type": "i18n",
-                                    "en-US": "intrinsicHeight",
-                                    "zh-CN": "原始高度"
-                                  }
-                                },
-                                "name": "intrinsicHeight",
-                                "setter": {
-                                  "componentName": "NumberSetter",
-                                  "isRequired": true,
-                                  "initialValue": 0
-                                }
-                              }
+                              // {
+                              //   "title": {
+                              //     "label": {
+                              //       "type": "i18n",
+                              //       "en-US": "intrinsicWidth",
+                              //       "zh-CN": "原始宽度"
+                              //     }
+                              //   },
+                              //   "name": "intrinsicWidth",
+                              //   "setter": {
+                              //     "componentName": "NumberSetter",
+                              //     "isRequired": true,
+                              //     "initialValue": 0
+                              //   }
+                              // },
+                              // {
+                              //   "title": {
+                              //     "label": {
+                              //       "type": "i18n",
+                              //       "en-US": "intrinsicHeight",
+                              //       "zh-CN": "原始高度"
+                              //     }
+                              //   },
+                              //   "name": "intrinsicHeight",
+                              //   "setter": {
+                              //     "componentName": "NumberSetter",
+                              //     "isRequired": true,
+                              //     "initialValue": 0
+                              //   }
+                              // }
                             ],
                             "extraSetter": {
                               "componentName": "MixedSetter",

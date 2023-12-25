@@ -4,10 +4,16 @@ import { event } from '@alilc/lowcode-engine';
 
 const defaultImage = 'https://img01.yzcdn.cn/upload_files/2023/11/07/f6f40a12d0e407df7206162fee241f08.png';
 
+interface ImageInfo {
+  imgUrl: string;
+  intrinsicWidth: number;
+  intrinsicHeight: number;
+}
+
 interface FileUploadProps {
   onUploadSuccess: (file: File) => void;
-  value: string,
-  onChange: (val: string) => void;
+  value: ImageInfo;
+  onChange: (val: ImageInfo) => void;
 }
 
 const FileUpload: React.FC<FileUploadProps> = (props) => {
@@ -17,7 +23,7 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
   const { value, onChange, field } = props;
 
   useEffect(() => {
-    const changeSelectValue = (value: string) => {
+    const changeSelectValue = (value: ImageInfo) => {
       onChange(value);
     }
     event.on(`common:custom-radio-setter.changeSelectValue`, changeSelectValue);
@@ -33,10 +39,24 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
   };
 
   const handleUploadSuccess = (file): void => {
-    // 在此处处理文件上传成功后的逻辑
-    // onUploadSuccess(file);
-    onChange(file.imgURL);
-    event.emit('custom-radio-setter.bindEvent', file.imgURL, 'custom-radio-setter.bindEvent');
+    const img = new Image();
+    img.onload = () => {
+      const width = img.width;
+      const height = img.height;
+      // 在这里可以获取到上传图片的真实宽高
+      console.log('gjl-真实宽度:', width);
+      console.log('gjl-真实高度:', height);
+      // 在此处处理文件上传成功后的逻辑
+      // onUploadSuccess(file);
+      const newImageInfo = {
+        imgUrl: file.imgUrl,
+        intrinsicWidth: img.width,
+        intrinsicHeight: img.height
+      };
+      onChange(newImageInfo);
+      event.emit('custom-radio-setter.bindEvent', newImageInfo, 'custom-radio-setter.bindEvent');
+    };
+    img.src = file.imgUrl;
   };
 
   const handleUploadError = (file): void => {
@@ -60,7 +80,7 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
       onSuccess={handleUploadSuccess}
       onError={handleUploadError}
     >
-      {value ? <img src={value} style={{ width: '100%' }} /> : uploadButton}
+      {value.imgUrl ? <img src={value.imgUrl} style={{ width: '100%' }} /> : uploadButton}
     </Upload>
   );
 };

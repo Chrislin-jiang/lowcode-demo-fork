@@ -112,7 +112,11 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
           right: end.x + 1,
           height: end.y - start.y + 1,
           width: end.x - start.x + 1,
-          image: defaultImage,
+          image: {
+            imgUrl: defaultImage,
+            intrinsicWidth: 556,
+            intrinsicHeight: 199
+          },
           // image: "",
           targetUrl: ''
         };

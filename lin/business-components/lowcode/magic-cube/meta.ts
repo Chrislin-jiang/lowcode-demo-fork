@@ -3,6 +3,18 @@ import { IPublicTypeComponentMetadata, IPublicTypeSnippet } from '@alilc/lowcode
 
 const defaultImage = 'https://img01.yzcdn.cn/upload_files/2023/11/07/f6f40a12d0e407df7206162fee241f08.png';
 
+interface ImageInfo {
+  imgUrl: string;
+  intrinsicWidth: number;
+  intrinsicHeight: number;
+}
+
+const defaultImageInfo = {
+  imgUrl: defaultImage,
+  intrinsicWidth: 556,
+  intrinsicHeight: 199
+};
+
 const MagicCubeMeta: IPublicTypeComponentMetadata = {
   "componentName": "MagicCube",
   "title": "MagicCube",
@@ -88,7 +100,7 @@ const MagicCubeMeta: IPublicTypeComponentMetadata = {
                           "right": 1,
                           "height": 1,
                           "width": 1,
-                          "image": defaultImage,
+                          "image": defaultImageInfo,
                           "targetUrl": {}
                         },
                         {
@@ -98,7 +110,7 @@ const MagicCubeMeta: IPublicTypeComponentMetadata = {
                           "right": 2,
                           "height": 1,
                           "width": 1,
-                          "image": defaultImage,
+                          "image": defaultImageInfo,
                           "targetUrl": {}
                         }
                       ]
@@ -271,15 +283,15 @@ const MagicCubeMeta: IPublicTypeComponentMetadata = {
                   "title": {
                     "label": {
                       "type": "i18n",
-                      "en-US": "image",
+                      "en-US": "imageInfo",
                       "zh-CN": "图片"
                     }
                   },
-                  "name": "image",
+                  "name": "imageInfo",
                   "setter": {
                     "componentName": "UploadSetter",
                     "isRequired": true,
-                    "initialValue": defaultImage
+                    "initialValue": defaultImageInfo
                   }
                 },
                 {

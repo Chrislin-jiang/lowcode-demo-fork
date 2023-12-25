@@ -6,12 +6,16 @@ import defaultImage from './defaultImage.png';
 
 import './index.scss';
 
+interface ImageInfo {
+  imgUrl: string;
+  intrinsicWidth: number;
+  intrinsicHeight: number;
+}
+
 export interface ImageAdvertProps {
   attr: {
     advertList?: Array<{
-      imageUrl: string;
-      intrinsicHeight: number;
-      intrinsicWidth: number;
+      imageInfo: ImageInfo;
     }>;
     advertTime?: number;
     chooseTemplate?: number;
@@ -108,7 +112,7 @@ const ImageAdvert: React.FC<ImageAdvertProps> = (props) => {
               key={index}
               style={{ marginRight: index !== len - 1 ? imageMargin : 0 }}
             >
-              <img src={item.imageUrl} alt={item.imageUrl} />
+              <img src={item.imageInfo?.imgUrl} alt={item.imageInfo?.imgUrl} />
             </div>
           );
         })}
@@ -123,8 +127,8 @@ const ImageAdvert: React.FC<ImageAdvertProps> = (props) => {
           return (
             <Swiper.Item className="advert_url_cls" key={index} style={{ textAlign: 'center' }}>
               <img
-                src={item.imageUrl}
-                alt={item.imageUrl}
+                src={item.imageInfo?.imgUrl}
+                alt={item.imageInfo?.imgUrl}
                 style={{
                   width: `100%`,
                   height: 'auto',
@@ -148,7 +152,7 @@ const ImageAdvert: React.FC<ImageAdvertProps> = (props) => {
     }
   };
 
-  const isImageEmpty = advertList?.every((ele) => !ele.imageUrl && !ele.fileKey);
+  const isImageEmpty = advertList?.every((ele) => !ele?.imageInfo?.imgUrl && !ele.fileKey);
   if (isImageEmpty) {
     return (
       <div className="pb-image-advert-empty" style={getContainerStyle('empty')}>

@@ -128,9 +128,9 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
     // const selectValue = cubeValueRef.current.list?.[item]?.['targetUrl']?.selectValue;
     // EventManager.emit('changeSelectValue', selectValue);
 
-    const activeImageUrl = cubeValueRef.current.list?.[item]?.['image'];
+    const activeImageInfo = cubeValueRef.current.list?.[item]?.['imageInfo'];
     // EventManager.emit('changeCurrentImage', activeImageUrl);
-    event.emit('custom-radio-setter.changeSelectValue', activeImageUrl)
+    event.emit('custom-radio-setter.changeSelectValue', activeImageInfo)
   };
 
   const changeListItem = (key: string, value: any) => {
