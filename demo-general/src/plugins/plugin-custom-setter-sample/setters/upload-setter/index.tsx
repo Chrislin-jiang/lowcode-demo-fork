@@ -11,8 +11,8 @@ interface FileUploadProps {
 }
 
 const FileUpload: React.FC<FileUploadProps> = (props) => {
-  console.log("gjl-FileUpload-props", props);
-  console.log("gjl-FileUpload-props.value", props.value);
+  // console.log("gjl-FileUpload-props", props);
+  // console.log("gjl-FileUpload-props.value", props.value);
 
   const { value, onChange, field } = props;
 

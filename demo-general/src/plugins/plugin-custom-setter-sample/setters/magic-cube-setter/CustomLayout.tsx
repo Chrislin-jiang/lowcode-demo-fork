@@ -11,6 +11,7 @@ interface CustomLayoutProps {
   row: number;
   col: number;
   onCurIndex: (index: number) => void;
+  onCustomChange: (val: object) => void;
   selectedNodeId: number;
   ref?: React.Ref<HTMLDivElement>;
 }
@@ -34,7 +35,7 @@ interface SplitKey {
 
 const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = forwardRef<HTMLDivElement, CustomLayoutProps>(
   (props: CustomLayoutProps, ref: Ref<HTMLDivElement>) => {
-    const { list, model, row, col, onCurIndex, selectedNodeId } = props;
+    const { list, model, row, col, onCurIndex, selectedNodeId, onCustomChange } = props;
     const [startKey, setStartKey] = useState<number>(0);
     const [curIndex, setCurIndex] = useState<number>(-1);
     const [edit, setEdit] = useState<boolean>(false);
@@ -53,13 +54,6 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
       }, 500);
     }, []);
 
-    useEffect(() => {
-      updateCurIndex(0);
-    }, [selectedNodeId]);
-
-    useEffect(() => {
-      setEditList(list);
-    }, [list]);
 
     useEffect(() => {
       setYs([...Array(row).keys()]);
@@ -77,7 +71,8 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
     };
 
     const updateList = (updatedValue: number[]) => {
-      setEditList(updatedValue);
+      // setEditList(updatedValue);
+      onCustomChange(updatedValue);
       // const { selectedNode, setSelectedNode, type, name } = props;
       // const newItem = produce(selectedNode, (draft) => {
       //   draft[type][name].list = updatedValue;
@@ -89,7 +84,7 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
       setStartKey(0);
       updateCurIndex(-1);
       setEdit(false);
-      setEditList([]);
+      onCustomChange([]);
       setEditKeys([]);
     };
 
@@ -117,8 +112,8 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
           targetUrl: ''
         };
 
-        const updatedValue = [...editList, temp];
-        updateList(updatedValue);
+        const updatedValue = [...list, temp];
+        onCustomChange(updatedValue);
         updateCurIndex(updatedValue.length - 1);
         setEditKeys([]);
         setEdit(false);
@@ -153,7 +148,7 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
     const antiCollision = (start: { x: number, y: number }, end: { x: number, y: number }) => {
       let result = false;
 
-      cloneDeep(editList).forEach((item) => {
+      cloneDeep(list).forEach((item) => {
         --item.bottom;
         --item.right;
         // 判断 x 是否有交集
@@ -213,7 +208,7 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
     };
 
     const deleteEditWrap = (index: number) => {
-      const updatedValue = [...editList];
+      const updatedValue = [...list];
       updatedValue.splice(index, 1);
       updateList(updatedValue);
       updateCurIndex(updatedValue.length - 1);
@@ -256,9 +251,11 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
         ))}
 
         {/* 编辑容器块 */}
-        {editList.map((item, index) => {
+        {list.map((item, index) => {
           const isActive = curIndex === index;
           const style = getStyle(item);
+          const isImageEmpty = item.image === defaultImage || !item.image;
+          const backgroundImage = isImageEmpty ? 'none' : `url(${item.image})`;
           return (
             <div
               key={index}
@@ -271,9 +268,9 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
                   <i className="gscm-designer-font icon-guanbi"></i>
                 </div>
               )}
-              <div className='edit-warp-text'>
-                <div>{`${parseInt(item.width * getBaseW())}x${parseInt(item.height * getBaseW())}`}</div>
-                {item.width > 1 && <div>或同等比例</div>}
+              <div className='edit-warp-text' style={{ backgroundImage }}>
+                {isImageEmpty && <div>{`${parseInt(item.width * getBaseW())}x${parseInt(item.height * getBaseW())}`}</div>}
+                {/* {item.width > 1 && <div>或同等比例</div>} */}
               </div>
             </div>
           );

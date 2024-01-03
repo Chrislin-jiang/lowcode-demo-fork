@@ -30,7 +30,7 @@ interface MagicCubeSetterProps {
   defaultValue?: CubeValue;
   value: CubeValue,
   // setter 唯一输出
-  onChange: (val: string) => void;
+  onChange: (val: object) => void;
 }
 
 const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
@@ -56,6 +56,7 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
 
     const bindEvent = (value: string) => {
       console.log("gjl-common:magic-cube-setter.bindEvent-on", value);
+      // newList -> newValue
       let newList = cloneDeep(cubeValueRef.current);
       const currentIdx = activeItemRef.current;
       if (newList?.list[currentIdx]) {
@@ -144,6 +145,17 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
     // setSelectedNode(newItem);
   };
 
+  const onCustomChange = (newList: []) => {
+    const { model, row, col } = cubeValueRef.current;
+    const newValue: CubeValue = {
+      model,
+      row,
+      col,
+      list: newList
+    };
+    onChange(newValue);
+  }
+
   return (
     <div className="magic-cube-setter">
       {cubeValue.model === 'custom' && (
@@ -170,6 +182,7 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
         model={cubeValue.model || 'magicCube1'}
         list={cubeValue.list || []}
         onCurIndex={onCurIndex}
+        onCustomChange={onCustomChange}
         // selectedNodeId={selectedNode.id}
         {...props}
       />
