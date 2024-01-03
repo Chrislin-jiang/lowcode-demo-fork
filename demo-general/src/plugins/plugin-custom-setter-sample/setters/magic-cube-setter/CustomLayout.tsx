@@ -11,7 +11,7 @@ interface CustomLayoutProps {
   row: number;
   col: number;
   onCurIndex: (index: number) => void;
-  onCustomChange: (val: object) => void;
+  onCustomChange: (val: []) => void;
   selectedNodeId: number;
   ref?: React.Ref<HTMLDivElement>;
 }
@@ -24,24 +24,15 @@ interface SplitKey {
   y: number;
   x: number;
 }
-// CustomLayout.defaultProps = {
-//   list: [],
-//   model: 'default',
-//   row: 3,
-//   col: 3,
-//   onCurIndex: () => {},
-//   selectedNodeId: 0
-// };
 
 const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = forwardRef<HTMLDivElement, CustomLayoutProps>(
   (props: CustomLayoutProps, ref: Ref<HTMLDivElement>) => {
-    const { list, model, row, col, onCurIndex, selectedNodeId, onCustomChange } = props;
+    const { list, model, row, col, onCurIndex, onCustomChange } = props;
     const [startKey, setStartKey] = useState<number>(0);
     const [curIndex, setCurIndex] = useState<number>(-1);
     const [edit, setEdit] = useState<boolean>(false);
     const [ys, setYs] = useState<number[]>([]);
     const [xs, setXs] = useState<number[]>([]);
-    const [editList, setEditList] = useState<any[]>([]);
     const [editKeys, setEditKeys] = useState<number[]>([]);
 
     const getBaseW = (): number => {
@@ -71,13 +62,7 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
     };
 
     const updateList = (updatedValue: number[]) => {
-      // setEditList(updatedValue);
       onCustomChange(updatedValue);
-      // const { selectedNode, setSelectedNode, type, name } = props;
-      // const newItem = produce(selectedNode, (draft) => {
-      //   draft[type][name].list = updatedValue;
-      // });
-      // setSelectedNode(newItem);
     };
 
     const reset = () => {
@@ -108,7 +93,6 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
           height: end.y - start.y + 1,
           width: end.x - start.x + 1,
           image: defaultImage,
-          // image: "",
           targetUrl: ''
         };
 
@@ -127,7 +111,6 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
 
       const keys = [];
       const start = splitKey(startKey);
-      // const end = splitKey(Number(e.target.dataset.key));
       const end = splitKey(Number((e.target as HTMLDivElement).dataset.key));
       const ys = sortBy([start.y, end.y]);
       const xs = sortBy([start.x, end.x]);

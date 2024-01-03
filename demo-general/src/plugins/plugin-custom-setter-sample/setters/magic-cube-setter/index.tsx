@@ -7,8 +7,6 @@ import { useLatest } from 'ahooks';
 
 import CustomLayout from './CustomLayout';
 import { cubeRowsList, initialModels, modelOptions } from './helper';
-// import EventManager from '../../sdk/EventManager';
-// import useLatest from '../../hooks/useLatest';
 
 import './index.scss';
 
@@ -22,32 +20,20 @@ interface CubeValue {
 }
 
 interface MagicCubeSetterProps {
-  // selectedNode: any;
-  // setSelectedNode: (node: any) => void;
   type: string;
   name: string;
   initialValue?: CubeValue;
   defaultValue?: CubeValue;
   value: CubeValue,
-  // setter 唯一输出
   onChange: (val: object) => void;
 }
 
 const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
-  // const { selectedNode, setSelectedNode, type, name, defaultValue } = props;
   const { value: cubeValue, initialValue: defaultValue, onChange } = props;
-  // const [cubeValue, setCubeValue] = useState<CubeValue>(value);
   const [activeItem, setActiveItem] = useState(0);
   const cubeValueRef = useLatest(cubeValue);
   const activeItemRef = useLatest(activeItem);
-  // const selectedNodeRef = useLatest(selectedNode);
   const layoutRef = useRef<any>(null);
-
-  // useEffect(() => {
-  //   if (selectedNode && selectedNode[type]) {
-  //     setCubeValue(selectedNode[type][name] ?? defaultValue ?? {});
-  //   }
-  // }, [selectedNode]);
 
   useEffect(() => {
     if (cubeValue === undefined && defaultValue) {
@@ -55,20 +41,15 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
     }
 
     const bindEvent = (value: string) => {
-      console.log("gjl-common:magic-cube-setter.bindEvent-on", value);
-      // newList -> newValue
-      let newList = cloneDeep(cubeValueRef.current);
+      console.log("common:magic-cube-setter.bindEvent-on", value);
+      let newValue = cloneDeep(cubeValueRef.current);
       const currentIdx = activeItemRef.current;
-      if (newList?.list[currentIdx]) {
-        newList.list[currentIdx].image = value;
+      if (newValue?.list?.[currentIdx]) {
+        newValue.list[currentIdx].image = value;
       }
-      onChange(newList);
+      onChange(newValue);
     };
 
-    // 这里由于面板上会有多个 setter，这里我用 field.id 来标记 setter 名
-    // const emitEventName = `${SETTER_NAME}-${props.field.id}`;
-    const emitEventName = `${SETTER_NAME}`;
-    // event.on(`${emitEventName}.bindEvent`, bindEvent);
     event.on(`common:magic-cube-setter.bindEvent`, bindEvent);
 
     return () => {
@@ -95,12 +76,7 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
       } else {
         newValue.list = JSON.parse(JSON.stringify(initialModels[model]));
       }
-      // const newItem = produce(selectedNode, (draft) => {
-      //   draft[type][name] = newValue;
-      // });
-      // setCubeValue(newValue);
       onChange(newValue);
-      // setSelectedNode(newItem);
     }
   };
 
@@ -112,37 +88,15 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
       row: value,
       col: value,
     };
-    // setCubeValue(newValue);
     onChange(newValue);
-    // const newItem = produce(selectedNode, (draft) => {
-    //   draft[type][name] = newValue;
-    // });
-    // setSelectedNode(newItem);
-
     layoutRef.current?.reset();
   };
 
   const onCurIndex = (item: number) => {
     setActiveItem(item);
-    // EventManager.emit('changeMagicCubeActive', item);
-
-    // const selectValue = cubeValueRef.current.list?.[item]?.['targetUrl']?.selectValue;
-    // EventManager.emit('changeSelectValue', selectValue);
 
     const activeImageUrl = cubeValueRef.current.list?.[item]?.['image'];
-    // EventManager.emit('changeCurrentImage', activeImageUrl);
     event.emit('magic-cube-setter.changeSelectValue', activeImageUrl)
-  };
-
-  const changeListItem = (key: string, value: any) => {
-    // const newValue = produce(cubeValueRef.current, (draft) => {
-    //   draft['list'][activeItemRef.current][key] = value;
-    // });
-    // setCubeValue(newValue);
-    // const newItem = produce(selectedNodeRef.current, (draft) => {
-    //   draft[type][name]['list'][activeItemRef.current][key] = value;
-    // });
-    // setSelectedNode(newItem);
   };
 
   const onCustomChange = (newList: []) => {
@@ -183,7 +137,6 @@ const MagicCubeSetter: React.FC<MagicCubeSetterProps> = (props) => {
         list={cubeValue.list || []}
         onCurIndex={onCurIndex}
         onCustomChange={onCustomChange}
-        // selectedNodeId={selectedNode.id}
         {...props}
       />
 
