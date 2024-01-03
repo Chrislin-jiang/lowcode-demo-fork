@@ -2,7 +2,7 @@ import React, { useState, useEffect, useImperativeHandle, ForwardRefRenderFuncti
 // import { produce } from 'immer'; 
 import { cloneDeep, sortBy } from 'lodash';
 
-import { cubeWrapWidth, customLayoutWidth, isIntersection } from './helper';
+import { cubeWrapWidth, customLayoutWidth, isRectangleOverlap } from './helper';
 import defaultImage from './defaultImage.png';
 
 interface CustomLayoutProps {
@@ -129,32 +129,18 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
     };
 
     const antiCollision = (start: { x: number, y: number }, end: { x: number, y: number }) => {
-      let result = false;
-
-      cloneDeep(list).forEach((item) => {
-        --item.bottom;
-        --item.right;
-        // 判断 x 是否有交集
-        if (isIntersection(sortBy([start.x, end.x]), [item.left, item.right])) {
-          if (start.y < item.top && end.y >= item.top) {
-            result = true;
-          }
-          if (start.y > item.bottom && end.y <= item.bottom) {
-            result = true;
-          }
+      for (let i = 0; i < list.length; i++) {
+        const item = list[i];
+        const rec1 = [start.x, start.y, end.x, end.y];
+        const rec2 = [item.left, item.top, item.right, item.bottom];
+        const isRectangleOverlapRes = isRectangleOverlap(rec1, rec2);
+        console.log("gjl-isRectangleOverlapRes", isRectangleOverlapRes);
+        // if (isRectangleOverlap(rec1, rec2)) {
+        if (isRectangleOverlapRes) {
+          return true;
         }
-        // 判断 y 是否有交集
-        if (isIntersection(sortBy([start.y, end.y]), [item.top, item.bottom])) {
-          if (start.x < item.left && end.x >= item.left) {
-            result = true;
-          }
-          if (start.x > item.right && end.x <= item.right) {
-            result = true;
-          }
-        }
-      });
-
-      return result;
+      }
+      return false;
     };
 
     const mergeKey = (y: number, x: number) => {

@@ -10,8 +10,6 @@ import { cubeRowsList, initialModels, modelOptions } from './helper';
 
 import './index.scss';
 
-const SETTER_NAME = 'magic-cube-setter';
-
 interface CubeValue {
   list?: any[];
   row?: number;

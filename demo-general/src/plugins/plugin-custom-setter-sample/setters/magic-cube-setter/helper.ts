@@ -1,3 +1,5 @@
+import { sortBy } from 'lodash';
+
 import defaultImage from './defaultImage.png';
 
 export const cubeRowsList: number[] = [4, 5, 6, 7];
@@ -302,13 +304,31 @@ export const modelOptions: ModelOption[] = [
   }
 ];
 
-export function isIntersection(arrA: number[], arrB: number[]): boolean {
-  const max = [arrA[0], arrB[0]];
-  const min = [arrA[1], arrB[1]];
+// export function isIntersection(arrA: number[], arrB: number[]): boolean {
+//   const max = [arrA[0], arrB[0]];
+//   const min = [arrA[1], arrB[1]];
 
-  if (Math.max(...max) <= Math.min(...min)) {
-    return true;
+//   if (Math.max(...max) <= Math.min(...min)) {
+//     return true;
+//   }
+
+//   return false;
+// }
+
+const rectangleFormat = (rec, temp) => {
+  const xs = sortBy([rec[0], rec[2]]);
+  const ys = sortBy([rec[1], rec[3]]);
+  if (temp) {
+    return [xs[0], ys[0], xs[1] + 1, ys[1] + 1];
+  } else {
+    return [xs[0], ys[0], xs[1], ys[1]];
   }
+};
 
-  return false;
-}
+export const isRectangleOverlap = function (rec1, rec2) {
+  const rectangle1 = rectangleFormat(rec1, true);
+  const rectangle2 = rectangleFormat(rec2);
+  console.log("gjl-rectangle1", rectangle1);
+  console.log("gjl-rectangle1", rectangle2);
+  return rectangle2[0] < rectangle1[2] && rectangle2[1] < rectangle1[3] && rectangle2[2] > rectangle1[0] && rectangle2[3] > rectangle1[1];
+};

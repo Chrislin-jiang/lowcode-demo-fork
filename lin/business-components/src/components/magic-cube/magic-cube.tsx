@@ -25,8 +25,10 @@ export interface MagicCubeProps {
 
 const MagicCube: React.FC<MagicCubeProps> = ({ isDesigner, isPreview, attr }) => {
   const { cube = {}, imgMargin, imgRadius } = attr;
+  console.log("gjl-cube", cube);
+
   // TODO: --theme-page-padding: 16px;
-  const pagePadding = 16;
+  const pagePadding = 0;
 
   const getContainerWidth = (): number => {
     return isDesigner && !isPreview ? 375 : globalThis.innerWidth;
@@ -91,7 +93,7 @@ const MagicCube: React.FC<MagicCubeProps> = ({ isDesigner, isPreview, attr }) =>
             key={index}
             className="absolute cube-item"
             style={getMainStyle(item)}
-            // onClick={() => handleClick(item.targetUrl)}
+          // onClick={() => handleClick(item.targetUrl)}
           >
             <div className="cube-item-wrap" style={getItemStyle(item.image)}></div>
           </div>
