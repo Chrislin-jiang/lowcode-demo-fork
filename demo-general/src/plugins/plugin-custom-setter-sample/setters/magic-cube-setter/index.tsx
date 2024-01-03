@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { produce } from 'immer';
 import { Select } from '@alifd/next';
 import { event } from '@alilc/lowcode-engine';
 import { cloneDeep } from 'lodash';

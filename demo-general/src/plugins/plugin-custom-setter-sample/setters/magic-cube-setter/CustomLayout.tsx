@@ -86,10 +86,8 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
         const end = splitKey(keys.pop());
 
         const temp = {
-          top: start.y,
-          left: start.x,
-          bottom: end.y + 1,
-          right: end.x + 1,
+          y: start.y,
+          x: start.x,
           height: end.y - start.y + 1,
           width: end.x - start.x + 1,
           image: defaultImage,
@@ -129,10 +127,10 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
     };
 
     const antiCollision = (start: { x: number, y: number }, end: { x: number, y: number }) => {
+      const rec1 = [start.x, start.y, end.x, end.y];
       for (let i = 0; i < list.length; i++) {
         const item = list[i];
-        const rec1 = [start.x, start.y, end.x, end.y];
-        const rec2 = [item.left, item.top, item.right, item.bottom];
+        const rec2 = [item.x, item.y, item.x + item.width, item.y + item.height];
         const isRectangleOverlapRes = isRectangleOverlap(rec1, rec2);
         console.log("gjl-isRectangleOverlapRes", isRectangleOverlapRes);
         // if (isRectangleOverlap(rec1, rec2)) {
@@ -162,15 +160,16 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
     const getStyle = (style) => {
       let result = {};
       Object.keys(style).forEach((key) => {
-        result[key] = style[key] * getWidth();
 
-        if (["top", "left"].includes(key)) {
-          --result[key];
+        if (key === 'x') {
+          result['left'] = style[key] * getWidth() - 1 + 'px';
+        }
+        if (key === 'y') {
+          result['top'] = style[key] * getWidth() - 1 + 'px';
         }
         if (["width", "height"].includes(key)) {
-          ++result[key];
+          result[key] = style[key] * getWidth() + 1 + 'px';
         }
-        result[key] += "px";
       });
 
       return result;

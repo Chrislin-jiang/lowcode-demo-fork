@@ -63,11 +63,19 @@ const MagicCube: React.FC<MagicCubeProps> = ({ isDesigner, isPreview, attr }) =>
   const getMainStyle = (styles: { [key: string]: number }): React.CSSProperties => {
     let result: React.CSSProperties = {};
     Object.keys(styles).map((key) => {
-      if (['left', 'right', 'width'].includes(key)) {
-        result[key] = styles[key] * getItemWidth();
-      }
-      if (['top', 'bottom', 'height'].includes(key)) {
-        result[key] = styles[key] * getItemHeight();
+      switch (key) {
+        case 'x':
+          result['left'] = styles[key] * getItemWidth();
+          break;
+        case 'y':
+          result['top'] = styles[key] * getItemHeight();
+          break;
+        case 'width':
+          result[key] = styles[key] * getItemWidth();
+          break;
+        case 'height':
+          result[key] = styles[key] * getItemHeight();
+          break;
       }
     });
     result.padding = imgMargin / 2;
