@@ -1,10 +1,26 @@
 ## Low-Code Engine Demo
+
 demo 是一个组合内核、setter、插件、物料的示范工程，因为未经长期生产环境打磨，可能还会有一些各个模块间结合的 bug，希望大家理解~
 
+## demo-general
+
+demo-general 项目启动
+
+lowcode-server 项目
+npm start
+
+lowcode-demo-fork\demo-general 项目
+npm start
+
+lowcode-demo-fork\lin\business-components
+npm run lowcode:dev
+
 ## 如何使用
+
 目前包含多个独立 demo 工程目录，每个 demo 目录都是一个独立的工程，代表一个特定的 demo 场景，可以选择其一单独使用。
 
-[推荐]使用yarn
+[推荐]使用 yarn
+
 ```bash
 git clone git@github.com:alibaba/lowcode-demo.git
 cd lowcode-demo
@@ -13,7 +29,8 @@ yarn
 yarn run start
 ```
 
-使用npm
+使用 npm
+
 ```bash
 git clone git@github.com:alibaba/lowcode-demo.git
 cd lowcode-demo
