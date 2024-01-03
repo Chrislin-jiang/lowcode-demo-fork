@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useRef, useEffect, createElement } from 'react';
+import { createElement } from 'react';
 import './index.scss';
 
 export interface MagicCubeProps {
@@ -7,13 +7,11 @@ export interface MagicCubeProps {
   isPreview: boolean;
   attr: {
     cube?: {
-      row: number;
-      col: number;
-      list: {
-        top: number;
-        left: number;
-        width: number;
-        height: number;
+      row?: number;
+      col?: number;
+      list?: {
+        x: number;
+        y: number;
         image: string;
         targetUrl?: string;
       }[];
@@ -24,6 +22,7 @@ export interface MagicCubeProps {
 }
 
 const MagicCube: React.FC<MagicCubeProps> = ({ isDesigner, isPreview, attr }) => {
+  // todo: 去掉 attr
   const { cube = {}, imgMargin, imgRadius } = attr;
   console.log("gjl-cube", cube);
 

@@ -69,7 +69,7 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
       setStartKey(0);
       updateCurIndex(-1);
       setEdit(false);
-      onCustomChange([]);
+      // onCustomChange([]);
       setEditKeys([]);
     };
 
