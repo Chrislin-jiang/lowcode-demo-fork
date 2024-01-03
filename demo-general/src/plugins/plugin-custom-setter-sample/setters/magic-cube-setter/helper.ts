@@ -9,10 +9,8 @@ export const cubeWrapWidth: number = 220;
 export const customLayoutWidth: number = 750;
 
 export interface Model {
-  top: number;
-  left: number;
-  bottom: number;
-  right: number;
+  x: number;
+  y: number;
   height: number;
   width: number;
   image: string;
@@ -25,19 +23,15 @@ export interface InitialModels {
 export const initialModels: InitialModels = {
   magicCube1: [
     {
-      top: 0,
-      left: 0,
-      bottom: 1,
-      right: 1,
+      y: 0,
+      x: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 0,
-      left: 1,
-      bottom: 1,
-      right: 2,
+      y: 0,
+      x: 1,
       height: 1,
       width: 1,
       image: defaultImage
@@ -45,28 +39,22 @@ export const initialModels: InitialModels = {
   ],
   magicCube2: [
     {
-      top: 0,
-      left: 0,
-      bottom: 1,
-      right: 1,
+      y: 0,
+      x: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 0,
-      left: 1,
-      bottom: 1,
-      right: 2,
+      y: 0,
+      x: 1,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 0,
-      left: 2,
-      bottom: 1,
-      right: 3,
+      y: 0,
+      x: 2,
       height: 1,
       width: 1,
       image: defaultImage
@@ -74,37 +62,29 @@ export const initialModels: InitialModels = {
   ],
   magicCube3: [
     {
-      top: 0,
-      left: 0,
-      bottom: 1,
-      right: 1,
+      y: 0,
+      x: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 0,
-      left: 1,
-      bottom: 1,
-      right: 2,
+      y: 0,
+      x: 1,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 0,
-      left: 2,
-      bottom: 1,
-      right: 3,
+      y: 0,
+      x: 2,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 0,
-      left: 3,
-      bottom: 1,
-      right: 4,
+      y: 0,
+      x: 3,
       height: 1,
       width: 1,
       image: defaultImage
@@ -112,37 +92,29 @@ export const initialModels: InitialModels = {
   ],
   magicCube4: [
     {
-      top: 0,
-      left: 0,
-      bottom: 1,
-      right: 1,
+      y: 0,
+      x: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 0,
-      left: 1,
-      bottom: 1,
-      right: 2,
+      y: 0,
+      x: 1,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 1,
-      left: 0,
-      bottom: 2,
-      right: 1,
+      y: 1,
+      x: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 1,
-      left: 1,
-      bottom: 2,
-      right: 2,
+      y: 1,
+      x: 1,
       height: 1,
       width: 1,
       image: defaultImage
@@ -150,28 +122,22 @@ export const initialModels: InitialModels = {
   ],
   magicCube5: [
     {
-      top: 0,
-      left: 0,
-      bottom: 2,
-      right: 1,
+      y: 0,
+      x: 0,
       height: 2,
       width: 1,
       image: defaultImage
     },
     {
-      top: 0,
-      left: 1,
-      bottom: 1,
-      right: 2,
+      y: 0,
+      x: 1,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 1,
-      left: 1,
-      bottom: 2,
-      right: 2,
+      y: 1,
+      x: 1,
       height: 1,
       width: 1,
       image: defaultImage
@@ -179,28 +145,22 @@ export const initialModels: InitialModels = {
   ],
   magicCube6: [
     {
-      top: 0,
-      left: 0,
-      bottom: 1,
-      right: 2,
+      y: 0,
+      x: 0,
       height: 1,
       width: 2,
       image: defaultImage
     },
     {
-      top: 1,
-      left: 0,
-      bottom: 2,
-      right: 1,
+      y: 1,
+      x: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      top: 1,
-      left: 1,
-      bottom: 2,
-      right: 2,
+      y: 1,
+      x: 1,
       height: 1,
       width: 1,
       image: defaultImage
@@ -208,37 +168,29 @@ export const initialModels: InitialModels = {
   ],
   magicCube7: [
     {
-      top: 0,
-      left: 0,
-      bottom: 4,
-      right: 2,
+      y: 0,
+      x: 0,
       height: 4,
       width: 2,
       image: defaultImage
     },
     {
-      top: 0,
-      left: 2,
-      bottom: 2,
-      right: 4,
+      y: 0,
+      x: 2,
       height: 2,
       width: 2,
       image: defaultImage
     },
     {
-      top: 2,
-      left: 2,
-      bottom: 4,
-      right: 3,
+      y: 2,
+      x: 2,
       height: 2,
       width: 1,
       image: defaultImage
     },
     {
-      top: 2,
-      left: 3,
-      bottom: 4,
-      right: 4,
+      y: 2,
+      x: 3,
       height: 2,
       width: 1,
       image: defaultImage
@@ -303,17 +255,6 @@ export const modelOptions: ModelOption[] = [
     col: 5
   }
 ];
-
-// export function isIntersection(arrA: number[], arrB: number[]): boolean {
-//   const max = [arrA[0], arrB[0]];
-//   const min = [arrA[1], arrB[1]];
-
-//   if (Math.max(...max) <= Math.min(...min)) {
-//     return true;
-//   }
-
-//   return false;
-// }
 
 const rectangleFormat = (rec, temp) => {
   const xs = sortBy([rec[0], rec[2]]);

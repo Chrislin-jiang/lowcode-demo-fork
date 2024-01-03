@@ -158,20 +158,13 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
     };
 
     const getStyle = (style) => {
-      let result = {};
-      Object.keys(style).forEach((key) => {
-
-        if (key === 'x') {
-          result['left'] = style[key] * getWidth() - 1 + 'px';
-        }
-        if (key === 'y') {
-          result['top'] = style[key] * getWidth() - 1 + 'px';
-        }
-        if (["width", "height"].includes(key)) {
-          result[key] = style[key] * getWidth() + 1 + 'px';
-        }
-      });
-
+      const { x, y, width, height } = style;
+      const result = {
+        left: `${x * getWidth() - 1}px`,
+        top: `${y * getWidth() - 1}px`,
+        width: `${width * getWidth() + 1}px`,
+        height: `${height * getWidth() + 1}px`,
+      };
       return result;
     };
 
