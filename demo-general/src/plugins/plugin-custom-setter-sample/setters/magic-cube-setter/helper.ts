@@ -11,8 +11,8 @@ export const customLayoutWidth: number = 750;
 export interface Model {
   x: number;
   y: number;
-  height: number;
   width: number;
+  height: number;
   image: string;
 }
 
@@ -23,15 +23,15 @@ export interface InitialModels {
 export const initialModels: InitialModels = {
   magicCube1: [
     {
-      y: 0,
       x: 0,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 0,
       x: 1,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
@@ -39,22 +39,22 @@ export const initialModels: InitialModels = {
   ],
   magicCube2: [
     {
-      y: 0,
       x: 0,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 0,
       x: 1,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 0,
       x: 2,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
@@ -62,29 +62,29 @@ export const initialModels: InitialModels = {
   ],
   magicCube3: [
     {
-      y: 0,
       x: 0,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 0,
       x: 1,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 0,
       x: 2,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 0,
       x: 3,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
@@ -92,29 +92,29 @@ export const initialModels: InitialModels = {
   ],
   magicCube4: [
     {
-      y: 0,
       x: 0,
-      height: 1,
-      width: 1,
-      image: defaultImage
-    },
-    {
       y: 0,
-      x: 1,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 1,
+      x: 1,
+      y: 0,
+      height: 1,
+      width: 1,
+      image: defaultImage
+    },
+    {
       x: 0,
+      y: 1,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 1,
       x: 1,
+      y: 1,
       height: 1,
       width: 1,
       image: defaultImage
@@ -122,22 +122,22 @@ export const initialModels: InitialModels = {
   ],
   magicCube5: [
     {
-      y: 0,
       x: 0,
+      y: 0,
       height: 2,
       width: 1,
       image: defaultImage
     },
     {
-      y: 0,
       x: 1,
+      y: 0,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 1,
       x: 1,
+      y: 1,
       height: 1,
       width: 1,
       image: defaultImage
@@ -145,22 +145,22 @@ export const initialModels: InitialModels = {
   ],
   magicCube6: [
     {
-      y: 0,
       x: 0,
+      y: 0,
       height: 1,
       width: 2,
       image: defaultImage
     },
     {
-      y: 1,
       x: 0,
+      y: 1,
       height: 1,
       width: 1,
       image: defaultImage
     },
     {
-      y: 1,
       x: 1,
+      y: 1,
       height: 1,
       width: 1,
       image: defaultImage
@@ -168,29 +168,29 @@ export const initialModels: InitialModels = {
   ],
   magicCube7: [
     {
-      y: 0,
       x: 0,
+      y: 0,
       height: 4,
       width: 2,
       image: defaultImage
     },
     {
-      y: 0,
       x: 2,
+      y: 0,
       height: 2,
       width: 2,
       image: defaultImage
     },
     {
-      y: 2,
       x: 2,
+      y: 2,
       height: 2,
       width: 1,
       image: defaultImage
     },
     {
-      y: 2,
       x: 3,
+      y: 2,
       height: 2,
       width: 1,
       image: defaultImage

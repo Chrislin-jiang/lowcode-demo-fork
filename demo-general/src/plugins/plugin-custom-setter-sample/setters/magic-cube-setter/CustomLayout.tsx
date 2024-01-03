@@ -86,8 +86,8 @@ const CustomLayout: ForwardRefRenderFunction<CustomDivRef, CustomLayoutProps> = 
         const end = splitKey(keys.pop());
 
         const temp = {
-          y: start.y,
           x: start.x,
+          y: start.y,
           height: end.y - start.y + 1,
           width: end.x - start.x + 1,
           image: defaultImage,
