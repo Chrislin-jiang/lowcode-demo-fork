@@ -12,6 +12,8 @@ export interface MagicCubeProps {
       list?: {
         x: number;
         y: number;
+        width: number;
+        height: number;
         image: string;
         targetUrl?: string;
       }[];
