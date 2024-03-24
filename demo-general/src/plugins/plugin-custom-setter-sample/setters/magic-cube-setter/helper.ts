@@ -268,8 +268,6 @@ const rectangleFormat = (rec, temp) => {
 
 export const isRectangleOverlap = function (rec1, rec2) {
   const rectangle1 = rectangleFormat(rec1, true);
-  const rectangle2 = rectangleFormat(rec2);
-  console.log("gjl-rectangle1", rectangle1);
-  console.log("gjl-rectangle1", rectangle2);
+  const rectangle2 = rectangleFormat(rec2, false);
   return rectangle2[0] < rectangle1[2] && rectangle2[1] < rectangle1[3] && rectangle2[2] > rectangle1[0] && rectangle2[3] > rectangle1[1];
 };
